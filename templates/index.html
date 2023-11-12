@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Jar App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 100%;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Date Jar App</h1>
+
+        <h2>Add a Date Idea</h2>
+        <form action="/add_idea" method="post">
+            <input type="text" name="idea" placeholder="Enter a new date idea" required>
+            <input type="submit" value="Add">
+        </form>
+
+        <h2>Total Date Jar Ideas</h2>
+        <p>{{ ideas|length }} ideas</p>
+
+        <h2>Get a Random Date Idea</h2>
+        <a href="/get_random_idea">Get Random Idea</a>
+    </div>
+</body>
+</html>
