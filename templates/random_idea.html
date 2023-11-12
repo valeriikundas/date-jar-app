@@ -1,50 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Random Date Idea</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 100%;
-            padding: 10px;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            text-align: center;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 10px 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            margin-left: 10px;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
     <h1>Random Date Idea</h1>
     {% if idea %}
-        <p>Your random date idea is: {{ idea }}</p>
+    <div>
+        <p>Your random date idea is:
+        <h1 style="color: green; border: 2px solid red">
+            {{ idea }}
+        </h1>
+
+        </p>
+        <div style="margin-bottom: 20px;">
+            <a href="/use/{{idea}}">Use idea</a>
+            <a href="/">Skip idea</a>
+        </div>
+    </div>
     {% else %}
-        <p>The date jar is empty. Add some date ideas first.</p>
+    <p>The date jar is empty. Add some date ideas first.</p>
     {% endif %}
-    <a href="/">Back to Home</a>
-</body>
-</html>
+</div>
+{% endblock %}

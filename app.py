@@ -3,9 +3,10 @@ import sqlite3
 import random
 
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"]=True
 
 # Initialize the SQLite database
-conn = sqlite3.connect("date_jar.db")
+conn = sqlite3.connect("date_jar.db", check_same_thread=False)
 cursor = conn.cursor()
 
 # Create the date_ideas table if it doesn't exist
@@ -21,10 +22,17 @@ def get_random_date_idea():
     ideas = cursor.fetchall()
     if ideas:
         random_idea = random.choice(ideas)
-        delete_date_idea(random_idea[0])
         return random_idea[1]
     else:
         return None
+
+def use_date_idea(idea):
+    idea_id = get_idea_id_by_name(idea)
+    delete_date_idea(idea_id)
+
+def get_idea_id_by_name(idea_title:str):
+    cursor.execute("SELECT id, idea FROM date_ideas WHERE idea = ?", (idea_title,))
+    return cursor.fetchone()[0]
 
 def get_all_date_ideas():
     cursor.execute("SELECT idea FROM date_ideas")
@@ -50,10 +58,15 @@ def random_idea():
     idea = get_random_date_idea()
     return render_template('random_idea.html', idea=idea)
 
+@app.route('/use/<string:idea>')
+def use_idea(idea):
+    use_date_idea(idea)
+    return redirect(url_for('home'))
+
 @app.route('/all')
 def all():
     ideas = get_all_date_ideas()
-    return jsonify(data=ideas)
+    return render_template("all_ideas.html",ideas=ideas)
 
 if __name__ == '__main__':
     app.run(debug=True)

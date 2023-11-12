@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date Jar App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "styles.html" %}
+</head>
+
+<body>
+    <div class="container">
+        <a href="/">Add idea</a>
+        <a href="/get_random_idea">Random idea</a>
+        <a href="/all">All ideas</a>
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+
+</html>
