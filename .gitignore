@@ -12,3 +12,4 @@ date_jar.db
 config.json
 __pycache__
 .venv/
+.DS_Store
