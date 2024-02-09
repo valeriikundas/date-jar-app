@@ -1,0 +1,17 @@
+# flyctl launch added from .gitignore
+**/.bash_history
+**/.bashrc
+**/.gitconfig
+**/.local
+**/.profile
+**/.pythonstartup.py
+**/.ssh
+**/.vimrc
+**/.virtualenvs
+**/README.txt
+**/date_jar.db
+**/config.json
+**/__pycache__
+**/.venv
+**/.DS_Store
+fly.toml
