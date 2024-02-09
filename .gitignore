@@ -2,3 +2,4 @@
 cdk/
 .python-version
 .DS_Store
+.venv/
